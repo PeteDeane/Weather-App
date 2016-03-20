@@ -1,0 +1,25 @@
+/*------------------------------------*\
+    $LAYOUT
+\*------------------------------------*/
+
+// General structure of main site elements such as body, page-wrapper, header, main, footer etc.
+
+body {
+    background: #f3f3f3;
+    overflow-x: hidden;
+}
+
+.page-wrapper {
+    margin: 0 auto;
+    background: #fff;
+}
+
+
+
+.main {
+    position: relative;
+    margin: 0 auto;
+    clear: both;
+    margin: 0 0 20px 0;
+}
+
