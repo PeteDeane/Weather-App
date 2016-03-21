@@ -15,7 +15,7 @@ var runSequence = require('run-sequence');
 var changed = require('gulp-changed');
 var browserSync = require('browser-sync');
 
-
+var chmod = require('gulp-chmod');
 
 // Build a paths object
 var paths = (function () {
@@ -43,17 +43,22 @@ var paths = (function () {
 })();
 
 
-// Compile Sass
-gulp.task('sass', ['cleanCSS'], function() {
-  return gulp.src(paths.sass + '*.scss')
-  .pipe(sourcemaps.init())
-  .pipe(sass().on('error', sass.logError))
-  .pipe(filter('**/*.css'))
-  .pipe(autoprefixer({
-    browsers: ['last 2 versions']
-  }))
-  .pipe(sourcemaps.write())
-  .pipe(gulp.dest(paths.css));
+gulp.task('chmod', () => {
+	return gulp.src(paths.dev)
+		.pipe(chmod({
+			owner: {
+				read: true,
+				write: true,
+				execute: true
+			},
+			group: {
+				execute: true
+			},
+			others: {
+				execute: true
+			}
+		}))
+		.pipe(gulp.dest(paths.build));
 });
 
 
@@ -162,9 +167,12 @@ gulp.task('watchAll', function() {
 
 
 
+
+
+
 // A pre build task that is used for both dev and deploy
 gulp.task('build', function(callback) {
-  runSequence('sass', 'copyJS', callback);
+  runSequence('chmod', 'sass', 'copyJS', callback);
 });
 
 //----------------------------------------------------------------------

@@ -1,19 +1,178 @@
-/*------------------------------------*    $VARIABLES
-\*------------------------------------*/
-/*------------------------------------*    $LAYOUT
-\*------------------------------------*/
 body {
   background: #f3f3f3;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  background-image: url("https://crepuscularrambling.files.wordpress.com/2013/06/dsc00452.jpg");
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: 'Titillium Web', Helvetica, Arial, sans-serif !important;
+  color: #333333;
+  overflow: hidden; }
 
-.page-wrapper {
-  margin: 0 auto;
-  background: #fff; }
+.container {
+  opacity: 0;
+  transition: all ease 2s;
+  width: 100%;
+  margin: 0 auto; }
+  @media (min-width: 600px) {
+    .container {
+      width: 400px;
+      transition: all ease 1.5s;
+      position: relative;
+      top: 50%;
+      -webkit-transform: translateY(-70%);
+              transform: translateY(-70%); }
+      .container.is-active {
+        top: 5%;
+        -webkit-transform: translateY(0);
+                transform: translateY(0); } }
 
-.main {
+.icon--umbrella {
   position: relative;
+  display: block;
+  width: 80px;
+  margin: 0 auto; }
+
+h1 {
+  font-size: 3em;
+  text-align: center;
+  color: #ffffff;
+  margin: 0 0 30px;
+  position: relative; }
+
+p {
+  text-align: center;
+  color: #ffffff;
+  padding: 0;
+  margin: 20px 0; }
+
+.location-form-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 40px;
   margin: 0 auto;
-  clear: both;
-  margin: 0 0 20px 0; }
+  padding: 10px 0 0;
+  background: #ffffff; }
+
+.location-form {
+  position: relative; }
+
+.get-location {
+  padding: 0;
+  font-size: 1.2em;
+  color: #333333;
+  width: 90%;
+  border: 0;
+  outline: none;
+  background: none;
+  text-align: center; }
+  .get-location:focus {
+    border: 0; }
+
+input {
+  font-family: 'Titillium Web', Helvetica, Arial, sans-serif !important; }
+
+::-webkit-input-placeholder {
+  color: #333333;
+  font-size: 1em; }
+
+::-moz-placeholder {
+  color: #333333; }
+
+:-ms-input-placeholder {
+  color: #333333; }
+
+input:focus::-webkit-input-placeholder {
+  color: transparent; }
+
+input:focus::-moz-input-placeholder {
+  color: transparent; }
+
+input:focus::-moz-input-placeholder {
+  color: transparent; }
+
+.submit-location {
+  position: absolute;
+  right: 0;
+  top: -10px;
+  height: 50px;
+  border: 0;
+  background: #333333;
+  color: #ffffff;
+  text-transform: uppercase;
+  padding: 0 10px;
+  font-weight: 700;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all ease 1s; }
+  .submit-location:hover {
+    background: #4d4d4d; }
+
+.weather-results {
+  margin-top: 40px;
+  padding: 30px;
+  background: white;
+  opacity: 0;
+  transition: all ease 2s;
+  display: none; }
+  .weather-results.is-visible {
+    opacity: 1; }
+
+.weather-results__icon {
+  width: 200px;
+  height: 200px;
+  position: relative; }
+  .weather-results__icon:before {
+    position: absolute;
+    display: block;
+    height: 200px;
+    width: 200px;
+    background: #ffffff;
+    opacity: 0.8; }
+
+.icon--clear-day {
+  background: url("/images/clear-day.svg"); }
+
+.icon--clear-night {
+  background: url("/images/clear-night.svg"); }
+
+.icon--few-clouds-day {
+  background: url("/images/few-clouds-day.svg"); }
+
+.icon--few-clouds-night {
+  background: url("/images/few-clouds-night.svg"); }
+
+.icon--scattered-day {
+  background: url("/images/scattered-day.svg"); }
+
+.icon--scattered-night {
+  background: url("/images/scattered-night.svg"); }
+
+.icon--broken-clouds {
+  background: url("/images/broken-clouds.svg"); }
+
+.icon--showers-day {
+  background: url("/images/showers-day.svg"); }
+
+.icon--showers-night {
+  background: url("/images/showers-night.svg"); }
+
+.icon--rain {
+  background: url("/images/rain.svg"); }
+
+.icon--thunderstorm {
+  background: url("/images/thunderstorm.svg"); }
+
+.icon--snow {
+  background: url("/images/snow.svg"); }
+
+.icon--fog-day {
+  background: url("/images/fog-day.svg"); }
+
+.icon--fog-night {
+  background: url("/images/fog-night.svg"); }
 
 /*# sourceMappingURL=maps/styles.css.map */
