@@ -18,12 +18,12 @@ $(function () {
       // Add getLocation data to API url to get location data
       $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + getLocation + "&units=metric&appid=68792d9cbf8c18dff3b8d8c23ad59223", function(result){
 
-
         // Log results in console for bug testing
         console.log("City: "+ result.name);
-        console.log("Weather: "+ result.weather[0].description);
         console.log("Temperature: "+ (Math.round(result.main.temp)) +"&deg;C");
-        console.log(result.clouds.all + "% Cloudy");
+        console.log("Weather: "+ result.weather[0].description + result.weather[0].main);
+        console.log(result.clouds.all + "% cloudy");
+        console.log(result.wind.speed);
         console.log(result.weather[0].icon);
 
         // Create re-usable variable for the icon code data
@@ -31,47 +31,72 @@ $(function () {
 
         // Create re-usable variable for the div that shows the weather svg icon
         var iconDiv = $(".weather-results__icon");
-
+        var body = $('body');
         // Reset iconDiv to default class
         iconDiv.attr('class', 'weather-results__icon');
+        body.attr('class', '');
+
 
         // Add class to iconDiv for each iconCode to enable use of custom svg icons
         // Icon codes taken from http://openweathermap.org/weather-conditions
         if(iconCode === '01d'){
-          iconDiv.addClass('icon--clear-day')
+          iconDiv.addClass('icon--clear-day');
+          body.addClass('bg1');
         } else if (iconCode === '01n'){
-          iconDiv.addClass('icon--clear-night')
+          iconDiv.addClass('icon--clear-night');
+          body.addClass('bg2');
         } else if (iconCode === '02d'){
-          iconDiv.addClass('icon--few-clouds-day')
+          iconDiv.addClass('icon--few-clouds-day');
+          body.addClass('bg3');
         } else if (iconCode === '02n'){
-          iconDiv.addClass('icon--few-clouds-night')
+          iconDiv.addClass('icon--few-clouds-night');
+          body.addClass('bg5');
         } else if (iconCode === '03d'){
-          iconDiv.addClass('icon--scattered-day')
+          iconDiv.addClass('icon--scattered-day');
+          body.addClass('bg4');
         } else if (iconCode === '03n'){
-          iconDiv.addClass('icon--scattered-night')
-        } else if (iconCode === '04d' || iconCode === '04n'){
-          iconDiv.addClass('icon--broken-clouds'  )
+          iconDiv.addClass('icon--scattered-night');
+          body.addClass('bg5');
+        } else if (iconCode === '04d'){
+          iconDiv.addClass('icon--broken-clouds');
+          body.addClass('bg3');
+        } else if (iconCode === '04n'){
+          iconDiv.addClass('icon--broken-clouds');
+          body.addClass('bg5');
         } else if (iconCode === '09d'){
-          iconDiv.addClass('icon--showers-day')
+          iconDiv.addClass('icon--showers-day');
+          body.addClass('bg6');
         } else if (iconCode === '09n'){
-          iconDiv.addClass('icon--showers-night')
-        } else if (iconCode === '10d' || iconCode === '10n'){
-          iconDiv.addClass('icon--rain')
-        } else if (iconCode === '11d' || iconCode === '11n'){
-          iconDiv.addClass('icon--thunderstorm')
+          iconDiv.addClass('icon--showers-night');
+          body.addClass('bg7');
+        } else if (iconCode === '10d'){
+          iconDiv.addClass('icon--rain');
+          body.addClass('bg8');
+        } else if (iconCode === '10n'){
+          iconDiv.addClass('icon--rain');
+          body.addClass('bg7');
+        }else if (iconCode === '11d' || iconCode === '11n'){
+          iconDiv.addClass('icon--thunderstorm');
+          body.addClass('bg9');
         } else if (iconCode === '13d' || iconCode === '13n'){
-          iconDiv.addClass('icon--snow')
+          iconDiv.addClass('icon--snow');
+          body.addClass('bg10');
         } else if (iconCode === '50d'){
-          iconDiv.addClass('icon--fog-day')
+          iconDiv.addClass('icon--fog-day');
+          body.addClass('bg3');
         } else if (iconCode === '50n'){
-          iconDiv.addClass('icon--fog-night')
+          iconDiv.addClass('icon--fog-night');
+          body.addClass('bg5');
         }
 
         // Output results on screen
-        $(".weather-results__location").html("The current weather in <span>" + result.name + "</span> is:");
-        $(".weather-results__description").html("Weather: "+ result.weather[0].description);
-        $(".weather-results__temp").html("Temperature: "+ (Math.round(result.main.temp)) +"&deg;C");
-        $(".weather-results__clouds").html(result.clouds.all + "% Cloudy");
+        $(".weather-results__location").html(result.name + " <span>, " + result.sys.country + "</span>");
+        $(".weather-results__temp").html((Math.round(result.main.temp)) +"&deg;C");
+        $(".weather-results__description").html(result.weather[0].description);
+        $(".weather-results__clouds").html("Clouds: " + result.clouds.all +"%");
+        $(".weather-results__wind").html("Wind speed : " + result.wind.speed + " ms");
+        $(".weather-results__humidity").html("Humidity : " + result.main.humidity + "%");
+
         $(".container").addClass('is-active');
 
         setTimeout(function(){

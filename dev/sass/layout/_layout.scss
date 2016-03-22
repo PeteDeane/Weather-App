@@ -1,79 +1,158 @@
 body {
-    background: #f3f3f3;
+    background: linear-gradient($dark-blue, lighten($dark-blue, 10%));
+    background: url('/images/bg-images/rain.jpg');
+    background-size: cover !important;
+    background-attachment: fixed !important;
     overflow-x: hidden;
-    background-image: url('https://crepuscularrambling.files.wordpress.com/2013/06/dsc00452.jpg');
-    background-size: cover;
     height: 100vh;
     width: 100%;
     padding: 0;
     margin: 0;
     font-family: 'Titillium Web', Helvetica, Arial, sans-serif !important;
     color: $dark-grey;
-    overflow: hidden
+    @media (min-width: 767px) {
+      overflow: hidden;
+    }
+
+    &.bg1 {
+      background: url('/images/bg-images/clear-day.jpg');
+    }
+    &.bg2 {
+      background: url('/images/bg-images/clear-night.jpg');
+    }
+    &.bg3 {
+      background: url('/images/bg-images/hazey-day.jpg');
+    }
+    &.bg4 {
+      background: url('/images/bg-images/scattered-day.jpg');
+    }
+    &.bg5 {
+      background: url('/images/bg-images/scattered-night.jpg');
+    }
+    &.bg6 {
+      background: url('/images/bg-images/showers-day.jpg')
+    }
+    &.bg7 {
+      background: url('/images/bg-images/showers-night.jpg')
+    }
+    &.bg8 {
+      background: url('/images/bg-images/rain.jpg')
+    }
+    &.bg9 {
+      background: url('/images/bg-images/thunderstorm.jpg')
+    }
+    &.bg10 {
+      background: url('/images/bg-images/snow.jpg')
+    }
+
+}
+
+.header {
+  width: 100%;
+  margin: 0;
+  position: relative;
+  @media (min-width: 767px) {
+    width: 400px;
+    padding: 20px;
+    margin: 0 auto;
+    &:before {
+      content: '';
+      background: $dark-blue;
+      height: 100%;
+      width: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.5;
+    }
+  }
+  .icon--umbrella {
+    position: relative;
+    display: block;
+    width: 40px;
+    margin: 0 auto;
+
+    @media (min-width: 767px) {
+      width: 80px;
+    }
+  }
+  h1 {
+    font-size: 1.8em;
+    text-align: center;
+    color: $white;
+    margin: 0 0 30px;
+    position: relative;
+    line-height: 1em;
+
+    @media (min-width: 767px) {
+      font-size: 2.6em
+    }
+  }
+  p {
+    text-align: center;
+    color: $white;
+    padding: 0;
+    margin: 0 0 10px 0;
+    font-size: 0.9em;
+    position: relative;
+    @media (min-width: 767px) {
+      font-size: 1em
+    }
+  }
 }
 // main container
 .container {
   opacity: 0;
   transition: all ease 2s;
-  width: 100%;
-  margin: 0 auto;
-  @media (min-width: 600px) {
-    width: 400px;
+  width: 90%;
+  margin: 5%;
+  @media (min-width: 767px) {
+    width: 540px;
+    margin: 0 auto;
     transition: all ease 1.5s;
     position: relative;
-    top: 50%;
-    transform: translateY(-70%);
+    transform: translateY(90%);
     &.is-active {
-      top: 5%;
       transform: translateY(0);
+      margin: 30px auto;
     }
   }
-}
-.icon--umbrella {
-  position: relative;
-  display: block;
-  width: 80px;
-  margin: 0 auto;
-}
-h1 {
-  font-size: 3em;
-  text-align: center;
-  color: $white;
-  margin: 0 0 30px;
-  position: relative;
-}
-
-p {
-  text-align: center;
-  color: $white;
-  padding: 0;
-  margin: 20px 0;
 }
 
 // Form styling
 .location-form-wrapper {
     position: relative;
     display: block;
-    width: 100%;
-    height: 40px;
+    max-width: 350px;
+    height: 30px;
     margin: 0 auto;
     padding: 10px 0 0;
     background: $white;
+
+    @media (min-width: 767px) {
+      height: 40px;
+    }
 }
 .location-form {
   position: relative;
 }
 .get-location {
-  padding: 0;
-  font-size: 1.2em;
+  font-size: 1em;
+  font-weight: 700;
   color: $dark-grey;
-  width: 90%;
   border: 0;
   outline: none;
   background: none;
+  text-transform: uppercase;
   text-align: center;
+  width: 80%;
   &:focus {
     border: 0;
+    outline: none;
+  }
+  @media (min-width: 767px) {
+    font-size: 1.2em;
   }
 }
 
@@ -107,9 +186,9 @@ input:focus::-moz-input-placeholder  {
   position: absolute;
   right: 0;
   top: -10px;
-  height: 50px;
+  height: 40px;
   border: 0;
-  background: $dark-grey;
+  background: $darkest-grey;
   color: $white;
   text-transform: uppercase;
   padding: 0 10px;
@@ -117,39 +196,102 @@ input:focus::-moz-input-placeholder  {
   font-size: 0.9em;
   cursor: pointer;
   transition: all ease 1s;
+  width: 20%;
   &:hover {
-    background: lighten($dark-grey, 10%)
+    background: lighten($darkest-grey, 10%)
+  }
+
+  @media (min-width: 767px) {
+    height: 50px;
   }
 }
 
 .weather-results {
-  margin-top: 40px;
-  padding: 30px;
+  margin-top: 20px;
+  padding: 20px;
   background: white;
   opacity: 0;
   transition: all ease 2s;
   display: none;
+  height: auto;
+  overflow: auto;
   &.is-visible {
-    // display: block;
     opacity: 1;
+  }
+  h2 {
+    margin-bottom: 20px
+  }
+  p {
+    margin: 0;
+  }
+
+  @media (min-width: 767px) {
+    padding: 30px;
+    margin-top: 40px;
+  }
+}
+
+.weather-results__info-wrapper {
+  margin-left: 45%;
+  @media (min-width: 767px) {
+    margin-left: 55%;
   }
 }
 
 // Weather icons
 .weather-results__icon {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   position: relative;
-  &:before {
-    position: absolute;
-    display: block;
-    height: 200px;
+  float: left;
+  margin: 0;
+
+  @media (min-width: 767px) {
     width: 200px;
-    background: $white;
-    opacity: 0.8;
+    height: 200px;
   }
 }
 
+.weather-results__location {
+  font-size: 1.8em;
+  font-weight: 800;
+  line-height: 1em;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  span {
+    font-weight: 500;
+    font-size: 0.5em
+  }
+
+  @media (min-width: 767px) {
+    font-size: 4em;
+  }
+}
+
+.weather-results__temp {
+  font-weight: 700;
+  font-size: 1.8em;
+  letter-spacing: -2px;
+  line-height: 1.2em;
+
+  @media (min-width: 767px) {
+    font-size: 2.8em;
+  }
+}
+.weather-results__description {
+  font-weight: 500;
+  font-size: 1.6em;
+  line-height: 1.2em;
+  margin-bottom: 20px;
+  &::first-letter {
+    text-transform: uppercase
+  }
+  @media (min-width: 767px) {
+    font-size: 2.8em;
+  }
+
+}
 .icon--clear-day {
   background: url("/images/clear-day.svg");
 }

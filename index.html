@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Weather Checker</title>
     <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,700,900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/build/css/styles.css" charset="utf-8">
@@ -9,23 +10,28 @@
   <body>
 
   <div class="container">
-    <img src="/images/umbrella.svg" width="50px" alt="" class="icon--umbrella">
-    <h1>Weather Checker</h1>
-    <p>Enter a town, city or UK postcode</p>
-    <div class="location-form-wrapper">
-      <form action="" class="location-form">
-        <input type="text" class="get-location" autofocus>
-        <input type="button" value="Submit" class="submit-location">
-      </form>
+    <div class="header">
+      <img src="/images/umbrella.svg" width="50px" alt="" class="icon--umbrella">
+      <h1>Weather Checker</h1>
+      <p>Enter a town, city or UK postcode</p>
+      <div class="location-form-wrapper">
+        <form action="" class="location-form">
+          <input type="text" class="get-location" autofocus>
+          <input type="button" value="GO!" class="submit-location">
+        </form>
+      </div>
     </div>
 
     <div class="weather-results">
-      <div class="weather-results__location"></div>
-      <div class="weather-results__icon"></div>
-      <div class="weather-results__description"></div>
-      <div class="weather-results__temp"></div>
-      <div class="weather-results__clouds"></div>
-      <div class="weather-results__wind"></div>
+        <h2 class="weather-results__location"></h2>
+        <div class="weather-results__icon"></div>
+        <div class="weather-results__info-wrapper">
+          <div class="weather-results__temp"></div>
+          <div class="weather-results__description"></div>
+          <div class="weather-results__clouds"></div>
+          <div class="weather-results__wind"></div>
+          <div class="weather-results__humidity"></div>
+        </div>
     </div>
   </div>
 
